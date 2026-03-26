@@ -1164,12 +1164,6 @@
             </intent-filter>
         </service>
 
-        <service android:name="org.microg.gms.common.GmsCommonService">
-            <intent-filter>
-                <action android:name="com.google.android.gms.common.service.START" />
-            </intent-filter>
-        </service>
-
         <activity
             android:name="org.microg.gms.mlkit.BarcodeScanningActivity"
             android:exported="true"
@@ -1222,6 +1216,7 @@
                 <action android:name="com.google.android.gms.cast.remote_display.service.START" />
                 <action android:name="com.google.android.gms.chromesync.service.START" />
                 <action android:name="com.google.android.gms.common.download.START" />
+                <action android:name="com.google.android.gms.common.service.START" />
                 <action android:name="com.google.android.gms.config.START" />
                 <action android:name="com.google.android.gms.constellation.service.START" />
                 <action android:name="com.google.android.gms.deviceconnection.service.START" />
@@ -1331,6 +1326,35 @@
                     tools:ignore="WearableBindListener" />
             </intent-filter>
         </service>
+        
+        <!-- RCS Engine Lifecycle Service V2 -->
+        <service
+            android:name="org.microg.gms.rcs.RcsEngineLifecycleServiceV2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.rcs.START" />
+                <action android:name="com.google.android.gms.rcs.engine.BIND" />
+                <action android:name="com.google.android.gms.rcs.engine.START" />
+                <action android:name="com.google.android.ims.rcs.engine.IRcsEngineController" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="RcsEngineLifecycleServiceVersions"
+                android:value="2" />
+        </service>
+        
+        <!-- RCS Status Broadcaster -->
+        <receiver android:name="org.microg.gms.rcs.RcsStatusBroadcaster"
+            android:exported="true">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

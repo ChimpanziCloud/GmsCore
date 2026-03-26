@@ -19,6 +19,7 @@ import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.StreetViewPanoramaOptions;
 import com.google.android.gms.maps.model.internal.IBitmapDescriptorFactoryDelegate;
 
+import com.huawei.hms.maps.MapsInitializer;
 import org.microg.gms.maps.hms.CameraUpdateFactoryImpl;
 import org.microg.gms.maps.hms.MapFragmentImpl;
 import org.microg.gms.maps.hms.MapViewImpl;
@@ -29,7 +30,6 @@ import org.microg.gms.maps.hms.model.BitmapDescriptorFactoryImpl;
 @Keep
 public class CreatorImpl extends ICreator.Stub {
     private static final String TAG = "GmsMapCreator";
-    public static volatile int VERSION = Integer.MAX_VALUE;
 
     @Override
     public void init(IObjectWrapper resources) {
@@ -59,7 +59,6 @@ public class CreatorImpl extends ICreator.Stub {
     @Override
     public void initV2(IObjectWrapper resources, int flags) {
         BitmapDescriptorFactoryImpl.INSTANCE.initialize(ObjectWrapper.unwrapTyped(resources, Resources.class));
-        VERSION = flags;
         //ResourcesContainer.set((Resources) ObjectWrapper.unwrap(resources));
         Log.d(TAG, "initV2 " + flags);
     }

@@ -36,6 +36,7 @@ dependencies {
     implementation project(':play-services-droidguard-core')
     implementation project(':play-services-fido-core')
     implementation project(':play-services-fitness-core')
+    implementation project(':play-services-rcs')
     implementation project(':play-services-gmscompliance-core')
     implementation project(':play-services-location-core')
     implementation project(':play-services-location-core-base')
@@ -48,7 +49,6 @@ dependencies {
     implementation project(':play-services-threadnetwork-core')
     implementation project(':play-services-vision-core')
     implementation project(':play-services-wearable-core')
-    implementation project(':play-services-rcs')
 
     implementation project(':play-services-core-proto')
 
